@@ -23,6 +23,7 @@ namespace VlogManager_Client.ViewModel
             Groups = Application.Current.Resources["GroupNames"] as List<string> ?? new List<string> { "Audio", "Video" };
         }
 
+        //Processes another podcast icon selection
         public void SelectAnotherImage()
         {
             var dlg = new OpenFileDialog();
@@ -32,11 +33,19 @@ namespace VlogManager_Client.ViewModel
             RecordToConfig.ImageUrl = dlg.FileName;
         }
 
+        /// <summary>
+        /// changes podcast's name
+        /// </summary>
+        /// <param name="newName"> Podcast new name</param>
         public void ChangePodcastName(string newName)
         {
             RecordToConfig.Name = newName;
         }
 
+        /// <summary>
+        /// Changes podcast's group
+        /// </summary>
+        /// <param name="groupName">new group name or name of existing one</param>
         public void ChangePodcastGroup(string groupName)
         {
             RecordToConfig.GroupName = groupName;

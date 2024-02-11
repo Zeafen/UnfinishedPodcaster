@@ -21,7 +21,11 @@ namespace VlogManager_Client.Comands
         private static Regex MinSecRegex = new Regex(@"^\d{2}:\d{2}\b");
         private static Regex SecRegex = new Regex(@"^[0-7]{1}[0-9]{4}\b|^[8]{1}[0-5]{1}[0-9]{3}\b|^[8]{1}[6]{1}[0-3]{1}[0-9]{2}\b");
 
-
+        /// <summary>
+        /// Works with opml file and processes podcasts, which can be there
+        /// </summary>
+        /// <param name="doc"> XmlDocument, which is connected to the .opml file</param>
+        /// <returns> List of podcasts, obtained from the .opml file</returns>
         public static List<PodcastRecord>? WorkWithOpml(XmlDocument doc)
         {
             try
@@ -41,6 +45,12 @@ namespace VlogManager_Client.Comands
                 return null;
             }
         }
+
+        /// <summary>
+        /// Processes the rss link, to which XmlDocument is connected to and gets podcasts from the document
+        /// </summary>
+        /// <param name="doc"> XmlDocument, which is connected to the .rss file</param>
+        /// <returns>Podcast from the rss link</returns>
         public static PodcastRecord? WorkWithRss(XmlDocument doc)
         {
             try
@@ -62,6 +72,11 @@ namespace VlogManager_Client.Comands
                 return null;
             }
         }
+        /// <summary>
+        /// Processes the rss link, to which XmlDocument is connected to and gets podcasts from the link
+        /// </summary>
+        /// <param name="xmlUrl"> link to the rss file or document</param>
+        /// <returns> Podcast record, obtained from the rss link</returns>
         public static PodcastRecord? WorkWithRss(string xmlUrl)
         {
             try
@@ -85,6 +100,11 @@ namespace VlogManager_Client.Comands
             }
         }
 
+        /// <summary>
+        /// Simply converts html text to plain
+        /// </summary>
+        /// <param name="htmlText"></param>
+        /// <returns>string of plain text</returns>
         public static string ConvertFromHtmlToPlain(string htmlText)
         {
             if (htmlText == null) return "";
@@ -95,6 +115,11 @@ namespace VlogManager_Client.Comands
             return text;
         }
 
+        /// <summary>
+        /// Converts different formats of podcast duration to timeSpan
+        /// </summary>
+        /// <param name="time">string, that contains podcast duration, it may be amount os seconds of formatted time, like 12:21</param>
+        /// <returns>TimeSpan, that contains podcast duration</returns>
         private static TimeSpan ConvertFromStrToTimeSpan(string time)
         {
             if (TimeRegex.IsMatch(time)) return TimeSpan.Parse(time);
@@ -103,6 +128,13 @@ namespace VlogManager_Client.Comands
             else return TimeSpan.Parse("00:00:00");
         }
 
+
+        /// <summary>
+        /// Downloads podcast image
+        /// </summary>
+        /// <param name="ImageUrl"> Url of podcast icon</param>
+        /// <param name="podcastName">it is podcast's name</param>
+        /// <returns>path to the icon on your computer</returns>
         private static string DownLoadImage(string ImageUrl, string podcastName)
         {
             if (string.IsNullOrEmpty(ImageUrl)) return string.Empty;

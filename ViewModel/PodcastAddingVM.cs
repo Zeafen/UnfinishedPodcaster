@@ -32,6 +32,11 @@ namespace VlogManager_Client.ViewModel
             }
         }
 
+        /// <summary>
+        /// gets only general information about specific podcast
+        /// </summary>
+        /// <param name="xmlUrl"> Rss link of podcast</param>
+        /// <returns> Podcast record, with only general information</returns>
         private PodcastRecord? GetPodcastInfo(string xmlUrl)
         {
             PodcastRecord podRec;
@@ -50,6 +55,11 @@ namespace VlogManager_Client.ViewModel
             }
         }
 
+
+        /// <summary>
+        /// Gets all required information about selected podcast
+        /// </summary>
+        /// <param name="xmlUrl"> Rss link of podcast</param>
         public void GetPodcast(string xmlUrl)
         {
             XmlDocument doc = new XmlDocument();
@@ -77,6 +87,9 @@ namespace VlogManager_Client.ViewModel
             }
         }
         
+        /// <summary>
+        /// Gets all required information about suggested podcasts
+        /// </summary>
         public void GetSuggests()
         {
             foreach(var pod in SignedRecords)
