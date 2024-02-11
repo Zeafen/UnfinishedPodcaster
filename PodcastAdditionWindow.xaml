@@ -1,0 +1,55 @@
+﻿<Window x:Class="VlogManager_Client.PodcastAdditionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VlogManager_Client.ViewModel"
+        mc:Ignorable="d"
+        WindowStyle="None" Height="200" Width="500">
+    <Window.Resources>
+        <DataTemplate x:Key="SuggestPodcastTemplate" >
+            <CheckBox Grid.RowSpan="2" Click="OnPodcastSuggestions_CheckedChanged">
+                <CheckBox.Content>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="{Binding Name}" FontSize="16" FontWeight="Bold" />
+                        <TextBlock Text="{Binding Summary}" FontSize="12" Grid.Row="1" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" />
+                    </Grid>
+                </CheckBox.Content>
+            </CheckBox>
+
+        </DataTemplate>
+    </Window.Resources>
+    <TabControl TabStripPlacement="Left">
+        <TabItem Header="Use an internet reference" >
+            <Grid VerticalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="50"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.ColumnSpan="2" FontSize="18" Text="Input the rss or opml refference" HorizontalAlignment="Center"/>
+                <TextBox Name="ReferenceInput"  FontSize="15" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,50,0"/>
+                <Button Name="ReferenceUse" Content="Add" Grid.Column="1" Grid.Row="1" Click="AddPodcasts" />
+            </Grid>
+        </TabItem>
+        <TabItem Header="Add our suggestions">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                <ListBox ItemTemplate="{StaticResource ResourceKey=SuggestPodcastTemplate}" ItemsSource="{Binding SuggestedPodcasts}"/>
+                <DockPanel Grid.Row="1" HorizontalAlignment="Right">
+                    <Button Name="SuggestsUse" Content="Add" Width="40" Click="AddPodcasts"/>
+                </DockPanel>
+            </Grid>
+        </TabItem>
+    </TabControl>
+</Window>

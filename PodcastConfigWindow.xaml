@@ -1,0 +1,138 @@
+﻿<Window x:Class="VlogManager_Client.ViewModel.PodcastConfigWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VlogManager_Client.ViewModel"
+        mc:Ignorable="d"
+        xmlns:rules="clr-namespace:VlogManager_Client.Rules"
+        xmlns:anims="clr-namespace:VlogManager_Client.Animation"
+        ResizeMode="NoResize"
+        Title="PodcastConfigWindow" Height="350" Width="600">
+    <Window.Resources>
+        <Storyboard x:Key="ChangeColumnsToEdit">
+            <anims:GridLengthAnimation From="0*" To="1*" BeginTime="0:0:0" Duration="0:0:2" Storyboard.TargetProperty="Width" Storyboard.TargetName="EditPodNameCol"/>
+            <anims:GridLengthAnimation From="1*" To="0*" BeginTime="0:0:0" Duration="0:0:2" Storyboard.TargetProperty="Width" Storyboard.TargetName="ViewPodNameCol"/>
+        </Storyboard>
+        <Storyboard x:Key="ChangeColumnsToView">
+            <anims:GridLengthAnimation From="0*" To="1*" BeginTime="0:0:0" Duration="0:0:2" Storyboard.TargetProperty="Width" Storyboard.TargetName="ViewPodNameCol"/>
+            <anims:GridLengthAnimation From="1*" To="0*" BeginTime="0:0:0" Duration="0:0:2" Storyboard.TargetProperty="Width" Storyboard.TargetName="EditPodNameCol"/>
+        </Storyboard>
+    </Window.Resources>
+    <TabControl >
+        <TabItem Header="Info" DataContext="{Binding RecordToConfig}">
+            <ScrollViewer VerticalScrollBarVisibility="Hidden">
+                <StackPanel>
+                    <Image Name="PodcastIcon"  HorizontalAlignment="Center">
+                        <Image.Source>
+                            <Binding Path="ImageUrl">
+                                <Binding.ValidationRules>
+                                    <rules:ImageSourceRule/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </Image.Source>
+                    </Image>
+                    <Grid Name="NameInputField">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Name="ViewPodNameCol"/>
+                            <ColumnDefinition Name="EditPodNameCol" Width="0"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="40"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="{Binding Name}" FontSize="22" FontFamily="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" IsEnabled="False"/>
+                            <Button VerticalContentAlignment="Center" Grid.Column="1" Click="OnBeginEditing_Click" >
+                                <Button.Content>
+                                    <Image Source="/Icons/4277132.png" MaxHeight="40"/>
+                                </Button.Content>
+                            </Button>
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="50"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBox Name="NameInput" FontSize="22" FontFamily="Bold" />
+                            <StackPanel Grid.Column="1">
+                                <Button Content="Save" Command="{Binding ChangeNameCommand}" CommandParameter="{Binding ElementName=NameInput, Path=Text, UpdateSourceTrigger=PropertyChanged}"/>
+                                <Button Content="Cancel" Click="OnStopEditingName_Click"/>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                    
+                    <TextBlock FontSize="15" Text="{Binding Description}" HorizontalAlignment="Left" TextWrapping="Wrap" />
+
+                    <TextBlock Margin="20,80,0,0" Text="Podcast link" FontSize="16" HorizontalAlignment="Left"/>
+                    <TextBlock Text="{Binding Link}" HorizontalAlignment="Left" FontSize="15" Foreground="Cyan" MouseLeftButtonDown="OnPodcastLink_Click" >
+                        <TextBlock.Style>
+                            <Style TargetType="TextBlock">
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Foreground" Value="DeepSkyBlue" />
+                                        <Setter Property="Cursor" Value="Hand"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                    <Grid Margin="20,50,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="30"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock  Text="{Binding Directory}" FontSize="12" TextTrimming="CharacterEllipsis"/>
+                        <Button Grid.Column="1" Click="OnGoToDirectory_Click" >
+                            <Button.Content>
+                                <Image Source="/Icons/folder_icon.png"/>
+                            </Button.Content>
+                        </Button>
+                    </Grid>
+
+                </StackPanel>
+            </ScrollViewer>
+        </TabItem>
+        <TabItem Header="Configure">
+            <ScrollViewer VerticalScrollBarVisibility="Hidden">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60" />
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="Group name" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,15,0"/>
+                    <ComboBox ItemsSource="{Binding Groups}" VerticalAlignment="Center" Height="30" Margin="15,0,0,0" Grid.Column="1" SelectionChanged="OnGroupChanged" >
+                        <ComboBox.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Add new Group" />
+                            </ContextMenu>
+                        </ComboBox.ContextMenu>
+                    </ComboBox>
+                    <TextBlock Text="Image configuring" FontSize="16" Grid.ColumnSpan="2" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,60,0,0"/>
+                    <Grid Grid.Row="2" Grid.ColumnSpan="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="50"/>
+                        </Grid.ColumnDefinitions>
+                        <Rectangle Grid.Column="0">
+                            <Rectangle.Fill>
+                            <VisualBrush Visual="{Binding ElementName=PodcastIcon}"></VisualBrush>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                        <Button Grid.Column="1" Background="White" Click="OnChangeIcon_Click"  >
+                            <Button.Content>
+                                <Image Source="/Icons/frame_icon.png" Height="40" Width="40" />
+                            </Button.Content>
+                        </Button>
+                    </Grid>
+                </Grid>
+            </ScrollViewer>
+        </TabItem>
+    </TabControl>
+</Window>
