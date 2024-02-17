@@ -15,8 +15,8 @@ namespace VlogManager_Client.Comands
         public RelayComand() { }
         public RelayComand( Action<object> execute, Func<object, bool> canExecute)
         {
-            _canExecute = canExecute?? throw new ArgumentNullException(nameof(_canExecute));
-            _execute = execute;
+            _canExecute = canExecute;
+            _execute = execute ?? throw new ArgumentNullException(nameof(_execute));
         }
 
         public RelayComand(Action<object> execute) : this(execute, null) { }
