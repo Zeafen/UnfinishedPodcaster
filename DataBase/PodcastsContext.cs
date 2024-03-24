@@ -17,7 +17,6 @@ namespace VlogManager_Client.DataBase
 
         public PodcastsContext()
         {
-            Database.EnsureDeleted();
             Database.EnsureCreated();
         }
 
