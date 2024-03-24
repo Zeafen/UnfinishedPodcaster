@@ -27,10 +27,10 @@ namespace VlogManager_Client.ViewModel
         public void SelectAnotherImage()
         {
             var dlg = new OpenFileDialog();
-            dlg.Filter = "Image files|*.bmp;*.jpg;*.png;*.tif|";
-            dlg.ShowDialog();
-            if (dlg.FileName == string.Empty) return;
-            RecordToConfig.ImageUrl = dlg.FileName;
+            dlg.Filter = "Image files(*.bmp,*.jpg)|*.bmp;*.jpg|*.png;|*.tif)";
+            if(dlg.ShowDialog() ?? false)
+                if (dlg.FileName == string.Empty) return;
+                    RecordToConfig.ImageUrl = dlg.FileName;
         }
 
         /// <summary>

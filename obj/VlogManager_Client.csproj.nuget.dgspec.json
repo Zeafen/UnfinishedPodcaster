@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\сергей\\Desktop\\VlogManager_Client\\VlogManager_Client\\VlogManager_Client.csproj": {}
+    "C:\\Users\\Kombucha\\Desktop\\VlogManager_Client\\VlogManager_Client\\VlogManager_Client.csproj": {}
   },
   "projects": {
-    "C:\\Users\\сергей\\Desktop\\VlogManager_Client\\VlogManager_Client\\VlogManager_Client.csproj": {
+    "C:\\Users\\Kombucha\\Desktop\\VlogManager_Client\\VlogManager_Client\\VlogManager_Client.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\сергей\\Desktop\\VlogManager_Client\\VlogManager_Client\\VlogManager_Client.csproj",
+        "projectUniqueName": "C:\\Users\\Kombucha\\Desktop\\VlogManager_Client\\VlogManager_Client\\VlogManager_Client.csproj",
         "projectName": "VlogManager_Client",
-        "projectPath": "C:\\Users\\сергей\\Desktop\\VlogManager_Client\\VlogManager_Client\\VlogManager_Client.csproj",
-        "packagesPath": "C:\\Users\\сергей\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\сергей\\Desktop\\VlogManager_Client\\VlogManager_Client\\obj\\",
+        "projectPath": "C:\\Users\\Kombucha\\Desktop\\VlogManager_Client\\VlogManager_Client\\VlogManager_Client.csproj",
+        "packagesPath": "C:\\Users\\Kombucha\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Kombucha\\Desktop\\VlogManager_Client\\VlogManager_Client\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\сергей\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Kombucha\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],

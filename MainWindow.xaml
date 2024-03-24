@@ -99,7 +99,7 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="25"/>
                             </Grid.ColumnDefinitions>
-                            <TextBox ToolTip="Enter any part of podcast`s name or description" Name="EpisodeOrderingString" VerticalAlignment="Center" Text="{Binding EpisodeOrderingString, UpdateSourceTrigger=PropertyChanged}" TextChanged="OnOrderingStringChanged"/>
+                            <TextBox ToolTip="Enter any part of episode`s name or description" Name="EpisodeOrderingString" VerticalAlignment="Center" Text="{Binding EpisodeOrderingString, UpdateSourceTrigger=PropertyChanged}" TextChanged="OnOrderingStringChanged"/>
                             <Button MaxHeight="20" MaxWidth="20" DockPanel.Dock="Right" Background="Red" Click="DisableEpisodeFilter_Click" Grid.Column="1" Margin="5,0,0,0">
                                 <Button.Content>
                                     <Image Source="/icons8-крестик-78.png" />

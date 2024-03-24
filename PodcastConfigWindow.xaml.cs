@@ -38,17 +38,8 @@ namespace VlogManager_Client.ViewModel
         {
             if (sender is Button b)
             {
-                if (b.Name.Contains("cancel", StringComparison.OrdinalIgnoreCase))
-                {
-                    Storyboard sb = FindResource("ChangeColumnsToView") as Storyboard;
-                    sb?.Begin();
-                }
-                else if (b.Name.Contains("save", StringComparison.OrdinalIgnoreCase))
-                {
-                    (DataContext as PodcastConfiguringVM).ChangePodcastName(NameInput.Text);
-                    Storyboard sb = FindResource("ChangeColumnsToView") as Storyboard;
-                    sb?.Begin();
-                }
+                Storyboard sb = FindResource("ChangeColumnsToView") as Storyboard;
+                sb?.Begin();
             }
         }
 

@@ -323,7 +323,7 @@ namespace VlogManager_Client.ViewModel
         private bool EpisodeNameDescriptionFilter(object episode)
         {
             if (episode == null || !(episode is Episode)) return false;
-            if (((Episode)episode).Name.Contains(EpisodeOrderingString, StringComparison.OrdinalIgnoreCase) || ((PodcastRecord)episode).Description.Contains(EpisodeOrderingString, StringComparison.OrdinalIgnoreCase)) return true;
+            if (((Episode)episode).Name.Contains(EpisodeOrderingString, StringComparison.OrdinalIgnoreCase) || ((Episode)episode).Description.Contains(EpisodeOrderingString, StringComparison.OrdinalIgnoreCase)) return true;
             return false;
         }
         /// <summary>

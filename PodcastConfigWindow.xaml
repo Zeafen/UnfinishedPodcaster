@@ -56,8 +56,8 @@
                             </Grid.ColumnDefinitions>
                             <TextBox Name="NameInput" FontSize="22" FontFamily="Bold" />
                             <StackPanel Grid.Column="1">
-                                <Button Content="Save" Command="{Binding ChangeNameCommand}" CommandParameter="{Binding ElementName=NameInput, Path=Text, UpdateSourceTrigger=PropertyChanged}"/>
-                                <Button Content="Cancel" Click="OnStopEditingName_Click"/>
+                                <Button Content="Save" Command="{Binding ChangeNameCommand}" CommandParameter="{Binding ElementName=NameInput, Path=Text}"/>
+                                <Button Content="Stop editing" Click="OnStopEditingName_Click"/>
                             </StackPanel>
                         </Grid>
                     </Grid>
@@ -104,7 +104,6 @@
                         <RowDefinition Height="60" />
                         <RowDefinition Height="Auto"/>
                         <RowDefinition/>
-                        <RowDefinition/>
                     </Grid.RowDefinitions>
                     <TextBlock Text="Group name" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,15,0"/>
                     <ComboBox ItemsSource="{Binding Groups}" VerticalAlignment="Center" Height="30" Margin="15,0,0,0" Grid.Column="1" SelectionChanged="OnGroupChanged" >
@@ -114,7 +113,7 @@
                             </ContextMenu>
                         </ComboBox.ContextMenu>
                     </ComboBox>
-                    <TextBlock Text="Image configuring" FontSize="16" Grid.ColumnSpan="2" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,60,0,0"/>
+                    <TextBlock Text="Image configuring" FontSize="16" Grid.ColumnSpan="2" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     <Grid Grid.Row="2" Grid.ColumnSpan="2">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
